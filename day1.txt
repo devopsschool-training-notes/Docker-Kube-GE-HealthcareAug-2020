@@ -356,6 +356,98 @@ PEM - rajesh-mumbai.pem for sshh
 13.233.0.254	Nishant Dalal
 52.66.198.125	KarthiC
 
+=======================================================================================
+Importance PID 1
+======================================================================================
+PM is running 				Vm is running 			Cont is running 
+if PID 1 is running.			if PID 1 is running.		if PID 1 is running.
+PID 1 systemd				PID 1 systemd			PID 1 ANYTHING
+
+Pull -> create -> start -> Become(attached to PID1) (Attached to container)
+==========================================================================
+			run
+
+Pull -> create -> start -> DO NOT BECOME 
+-----------------------------------------------
+run -d
+
+=======================================================================================
+How to consume Containers?
+=============================================
+Vm - phys
+=============
+How to go inside it?
+- exec way
+	it would execute a container if executables is exist inside a container.
+	but you can go inside a container using -it and bash.
+
+- attach
+	it attached to PID1
+
+How to access app which is running inside and access from outside?
+ 58  docker ps
+   59  docker inspect 69e35e1fd3d0
+   60  curl http://172.17.0.2
+   61  docker ps
+
+
+
+ 2  docker ps
+    3  docker ps
+    4  docker exec 1feb2a679767 ps -eaf
+    5  clear
+    6  docker ps
+    7  docker ps -a
+    8  clear
+    9  docker stop $(docker ps -a -q)
+   10  docker rm $(docker ps -a -q)
+   11  clear
+   12  docker ps -a
+   13  docker run ubuntu
+   14  docker ps
+   15  docker run jenkins
+   16  clear
+   17  docker run -d jenkins
+   18  docker ps
+   19  docker run -d ubuntu'
+   20  docker run -d ubuntu
+   21  docker ps
+   22  clear
+   23  docker ps -a
+   24  clear
+   25  docker run ubuntu ls
+   26  docker ps
+   27  clear
+   28  docker ps
+   29  docker exec 7db899468831 ls
+   30  docker exec 7db899468831 df -kh
+   31  docker exec 7db899468831 ps -eaf
+   32  clear
+   33  docker exec 7db899468831 pddd
+   34  clear
+   35  docker ps
+   36  docker exec -it 7db899468831 /bin/bash
+   37  docker ps
+   38  clear
+   39  ls
+   40  docker run -it ubuntu /bin/bash
+   41  docker run -itd ubuntu /bin/bash
+   42  docker ps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
