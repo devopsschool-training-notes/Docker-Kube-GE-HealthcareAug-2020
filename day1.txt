@@ -1,0 +1,362 @@
+1 2 3 4 5 6 7 8 9 0 
+=============================
+Rajesh Kumar
+docker  + Kub
+===================================================
+5 days
+=============================
+2 days - docker
+3 days - kub
+=============================
+Lab - AWS
+Demo - AWS
+===============
+9 - 5
+==================
+Lunch Hour - 12.30 - 1:30 
+break - 15mins 
+		10:30
+		3:00 - 
+==============================
+8105843520
+==============================
+What is Docker?
+=========================
+	---------------------
+	Container mgmt tool
+	Written in go 
+	written by Soloman Hykes
+	Release
+		CE - Comm Edi	- FREE - OS
+		EE - Een Enter	- PAID
+	Version
+		19.X
+	
+	
+
+	Container
+	---------------
+	What is Container?
+		Self contained independent env to run any APPs. 
+		Org of ns\
+	USER NS
+			attached to 
+					PID NS --> 1
+					NET NS --> 1
+					MNT NS --> 1
+			-------------------------------------
+			with a help of Docker
+					---- Docker is asking from ContainerD 
+						--- > ContainerD is from Kernal
+
+	
+				
+=========================================================================
+30 YEARS			15 YEARS			NOW
+=========================================================================
+PHYSICAL SERVER			Virtualization
+
+		Internet
+
+
+	mgmt 
+
+
+	tool / platform
+	----------------------
+	- Save our time	
+	- Save our cost
+	- Imp efficiency
+========================================================
+How a APP can run?
+What are the components needed to run any APP?
+What are pre for runnuing any app/soft?
+========================================================
+
+javaX
+======
+
+HW --> OS ---> KERNAL 
+			USERSPACE
+			PMAP
+			NETWORK
+			STORAGE
+
+				-> JDK -> javaX
+======================================
+HW
+	CPU
+	RAM
+	HDD
+OS
+	KERNAL
+		Namespace[lib]
+			USER NS ---> UNLIMTED USER
+			PID NS --> 1
+			NET NS --> 1
+			MNT NS --> 1
+		Cgroup
+			Allocating a CPU to PID.
+			
+		Capabilties
+			root
+			non root
+==================================================
+PC concept ---> PERSONAL COMPUTING 
+------------------------------------
+		HUMAN
+
+MNT  === filesystem(s)
+======================================================
+BOOTFS -> ROOTFS -> USERFS + APPFS
+(KERNAL)
+============================
+	OS
+
+===========================================================================
+
+Architecture of Docker
+==========================================
+Human --> Docker Client ----REST API---> Docker Deamon --> ContainerD --> Kernal
+										- Container
+										---------------
+										Managed by RUNC
+	====================================================
+			Docker Engine'
+
+
+Component of Dockers
+================================
+Docker Engine - Tool which we install.
+Docker Image - 
+	Rootfs + appfs + userfs
+	-----------------------------
+	ub	+ apache2 + apache
+
+	ISO Image
+	------------
+	Bootfs + Rootfs + appfs
+		 Image - userfs
+			---------
+				MNT - 1 
+
+Docker Registry
+	public
+		hub.docker.com
+		google registry
+
+	pvt
+		artifactory
+		nexus
+
+Docker Container
+		The moment you run - docker image. - One container a created 
+		with
+			One USER ns 
+				one net
+				one pid
+				one mnt === Coming from Docker Image.
+
+=================
+Whatever you have image - You see inside a container.
+One image - you can have multiple container.
+
+========================================================================
+Docker workflow ????
+=============================================
+
+Container Workflow
+=============================================
+create -> start -> stop -> start -> restart -> pause -> unpause -> kill -> remove
+
+
+Which app? Which Image?
+- jenkins
+	- Java web based 
+	- port
+	- jre
+	- rootfs
+	
+
+How to install Docker?
+===================================
+
+https://www.devopsschool.com/tutorial/docker/install-config/
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+
+13.235.254.14
+
+DOCKER NEED ROOT ACCESS OR SUDO
+===================================
+
+
+
+
+  1  clear
+    2  ls
+    3  clear
+    4  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    5  clear
+    6  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    7  sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    8  sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+    9  sudo yum install -y docker-ce
+   10  clear
+   11  sudo systemctl enable docker
+   12  sudo systemctl start docker
+   13  docker info
+   14  clear
+   15  docker info
+   16  clear
+   17  docker -v
+   18  docker help
+   19  clear
+   20  docker info
+   21  clear
+   22  ls
+   23  docker ps
+   24  docker ps -a
+   25  docker images
+   26  history
+
+
+ 13  docker info
+   14  clear
+   15  docker info
+   16  clear
+   17  docker -v
+   18  docker help
+   19  clear
+   20  docker info
+   21  clear
+   22  ls
+   23  docker ps
+   24  docker ps -a
+   25  docker images
+   26  history
+   27  clear
+   28  docker pull jenkins
+   29  clear
+   30  docker image
+   31  docker images
+   32  clear
+   33  docker images
+   34  docker create jenkins
+   35  docker ps
+   36  docker ps -a
+   37  docker start 72c6ebac052d
+   38  docker ps -a
+   39  docker stop 72c6ebac052d
+   40  docker ps -a
+   41  'clear
+   42  clear
+   43  docker ps
+   44  docker ps -a
+   45  docker start 72c6ebac052d
+   46  docker ps -a
+   47  clear
+   48  docker ps -a
+   49  docker re'start 72c6ebac052d
+   50  docker restart 72c6ebac052d
+   51  docker ps -a
+   52  clear
+   53  docker pause  72c6ebac052d
+   54  docker ps -a
+   55  docker unpause  72c6ebac052d
+   56  docker ps -a
+   57  docker kill 72c6ebac052d
+   58  docker ps -a
+   59  docker rm 72c6ebac052d
+   60  docker ps -a
+   61  clear
+   62  history
+
+
+ 59  docker rm 72c6ebac052d
+   60  docker ps -a
+   61  clear
+   62  history
+   63  clear
+   64  which docker
+   65  ps -eaf | grep docker
+   66  which containerd
+   67  docker create jenkins
+   68  docker start 9895b18eb5227acd0bd0f035f34d365760906d596f9877bf788633dae1b7c329
+   69  clear
+   70  ps -eaf | grep docker
+   71  history
+
+
+ 87  ckear
+   88  clear
+   89  docker images
+   90  docker rmi jenkins
+   91  docker ps -a
+   92  docker stop 9895b18eb522
+   93  docker rm 9895b18eb522
+   94  clear
+   95  docker rmi jenkins
+   96  clear
+   97  docker images
+   98  docker ps -a
+   99  history
+======================
+hub.docker.com [ default ]
+
+docker pull jenkins
+
+docker pull http://45.4.4.4:8080/jenkins
+
+Assignment
+========================
+pause Vs unpause 
+stop  Vs kill 
+
+UserName - centos
+Key - https://www.devopsschool.com/notes/docker/2019/
+PPK - rajesh-mumbai.ppk for putty
+PEM - rajesh-mumbai.pem for sshh
+
+13.232.151.75	Angelo Fernandes
+15.206.94.30	Sonal Jain
+13.232.199.135	Venkatesh pattabhi
+35.154.165.90	Amey Walke
+3.6.37.253	Shreyansh Shah
+13.234.231.32	Prasad Dhanala
+13.235.254.14	Vikas Parihar
+13.126.96.169	Shanthesh Kulur Sringeshwara Rao
+13.127.226.242	Adarsh V Nath
+13.232.218.23	Praveen Kumar
+15.206.172.11	Senthilnathan V
+15.206.74.214	Arijit Nath
+13.232.244.68	Ujjwal Kumar Pandey
+13.233.114.140	Sai Kumar
+15.206.91.250	Amandeep
+13.126.9.131	Arun Sathyanarayanan
+13.127.97.204	Sanjeeva Reddyvandla
+13.126.108.196	Varun Jalihal
+13.232.151.75	Angelo Fernandes
+15.206.94.30	Sonal Jain
+13.232.199.135	Venkatesh pattabhi
+35.154.165.90	Amey Walke
+3.6.37.253	Shreyansh Shah
+13.234.231.32	Prasad Dhanala
+13.235.254.14	Vikas Parihar
+13.126.96.169	Shanthesh Kulur Sringeshwara Rao
+13.127.226.242	Adarsh V Nath
+13.232.218.23	Praveen Kumar
+15.206.172.11	Senthilnathan V
+15.206.74.214	Arijit Nath
+13.232.244.68	Ujjwal Kumar Pandey
+13.233.114.140	Sai Kumar
+15.206.91.250	Amandeep
+13.126.9.131	Arun Sathyanarayanan
+13.127.97.204	Sanjeeva Reddyvandla
+13.126.108.196	Varun Jalihal
+13.233.0.254	Nishant Dalal
+52.66.198.125	KarthiC
+
+
+
+
+
