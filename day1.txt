@@ -435,19 +435,90 @@ How to access app which is running inside and access from outside?
    42  docker ps
 
 
+https://www.devopsschool.com/tutorial/docker/commands/
+========================================================
+
+docker run -d jenkins
+
+docker run -d -p 8080:8080 jenkins
+docker run -d -p 8081:8080 jenkins
+
+
+
+ 67  docker ps
+   68  docker exec 8a271ff13ffd ls /opt
+   69  ls
+   70  touch devopsschool.txt
+   71  ls
+   72  docker cp 8a271ff13ffd:/opt
+   73  clear
+   74  docker cp devopsschool.txt '8a271ff13ffd:/opt
+   75  docker cp devopsschool.txt 8a271ff13ffd:/opt
+   76  docker exec 8a271ff13ffd ls /opt
+   77  ls
+   78  rm -rf devopsschool.txt
+   79  docker exec 8a271ff13ffd:/opt/devopsschool.txt .
+   80  docker cp 8a271ff13ffd:/opt/devopsschool.txt .
+   81  ls
+   82  clear
+   83  ls
+   84  docker diff 8a271ff13ffd
+   85  clear
+   86  clea
+   87  clear
+   88  ls
+   89  docker ps
+   90  docker port 8a271ff13ffd
+   91  clear
+   92  docker run -d -p 8080:8080 jenkins
+   93  docker run -d -p 8080:8080 jenkins'
+   94  docker run -d -p 8080:8080 jenkins
+   95  docker run -d -p 8081:8080 jenkins
+   96  docker ps
+   97  docker port b154a9e5a2a9
+   98  clear
+   99  history
+
+
+ 100  clear
+  101  docker ps
+  102  docker rename b154a9e5a2a9 dev1
+  103  docker ps
+  104  clear
+  105  docker run -d --name dev2 jenkins
+  106  docker ps
+
+
+
+Assignment 
+========================
+update	Update configuration of one or more containers
+wait	Block until one or more containers stop, then print their exit codes
 
 
 
 
-
-
-
-
-
-
-
-
-
+126  ps -eaf | grep docker
+  127  docker ps -a
+  128  docker exec accc0288faaa pe -eaf
+  129  docker exec accc0288faaa ps -eaf
+  130  docker run -d jenkins
+  131  docker ps -a
+  132  ps -eaf | grep docker
+  133  docker top 8b5ac3855c50
+  134  clear
+  135  docker top 8b5ac3855c50
+  136  clear
+  137  docker top 8b5ac3855c50
+  138  ps -eaf | grep docker
+  139  ps -eaf | grep 26427
+  140  ps -eaf | grep 26452
+  141  ps -eaf | grep 26230
+  142  clear
+  143  ps -eaf | grep docker
+  144  lear
+  145  clear
+  146  history
 
 
 
