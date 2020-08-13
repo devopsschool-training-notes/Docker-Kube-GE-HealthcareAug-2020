@@ -280,6 +280,87 @@ Varun Jalihal	35.154.95.253
 Nishant Dalal	13.233.53.76
 Karthik		13.233.43.75
 
+================================================================
+- Image has multiple filesysytems where first fs is always rootfs
+- on top of it -- other app fs..
+
+- union mount merger all these layers - create one layer - RW
+
+		- rule - in case of conflict - top layer always win
+
+- RW layer is divided into 2 
+			DIFF - contains only changed-add-delted on top of Image merged layer.
+					- is a deltan chanegd done in container
+					- this need to be created RO layer with one another image.
+			MERGED ----> Merge of all layer of image
+					Get delted when u stop a container
+					created when u start/run a container
+			WORK
+
+
+jenkins
+	openjdk:8-jdk
+		buildpack-deps:buster-scm
+			buildpack-deps:buster-curl
+				debian:buster
+					scratch
+===================================================
+How to create Images? Commit layer???
+===============================]
+Using Existing Container
+=================================================
+
+
+How to share my image with my team ?
+	tar ball
+
+ 897  docker images
+  898  clear
+  899  docker save -o up-git-apache2-update.tar up-git-apache2-update
+  900  ls
+  901  ls
+  902  history
+  903  docker stop $(docker ps -a -q)
+  904  docker rm $(docker ps -a -q)
+  905  clear
+  906  docker images
+  907  docker rmi up-git-apache2-update
+  908  ls
+  909  docker images
+  910  docker load -i up-git-apache2-update.tar
+  911  docker images
+
+	hub.docker.com
+ 789  docker images
+  790  docker inspect ubuntu
+  791  clear
+  792  ls
+  793  docker images
+  794  docker history ubuntu
+  795  clear
+  796  ls
+  797  docker images
+  798  docker login
+  799  clear
+  800  ls
+  801  docker images
+  802  docker push up-git-apache2-update
+  803  docker tag up-git-apache2-update devopsschools/aug13
+  804  docker images
+  805  clear
+  806  docker push devopsschools/aug13
+  807  history
+
+
+	artifactory 
+	nexus
+	ecr
+	gr
+	azure registry
+
+
+Using Dockerfile - Automated way CI CD.
+
 
 
 
