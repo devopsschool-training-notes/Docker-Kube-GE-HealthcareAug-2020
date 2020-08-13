@@ -1,0 +1,293 @@
+Docker Volume 
+==========================
+What is Docker Volume?
+-- To Make data peristance
+=========================================
+https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep-dive-level/
+3 Types
+===============================
+13.232.163.110
+- volume	/var/lib/docker/volumes
+- mount 	any place in host machine - nfs
+- tmpfs		memory
+
+466  cd /var/lib/docker/
+  467  find . -name devopsschool.txt
+  468  docker ps
+  469  clear
+  470  docker ps
+  471  docker stop 7a8d386185bd
+  472  docker ps -a
+  473  clear
+  474  docker rm 7a8d386185bd
+  475  clear
+  476  ls
+  477  docker help
+  478  clear
+  479  docker volume
+  480  clear
+  481  docker volume ls
+  482  ls
+  483  cd volumes/
+  484  clear
+  485  ls
+  486  docker volume ls
+  487  clear
+  488  cd ae02d95e7f6ab6cb44b3061375ee892c9e723feb7ed1c7d77801a29530c877df
+  489  ls
+  490  cd _data/
+  491  ls
+  492  cd ..
+  493  cd ..
+  494  ls
+  495  clear
+  496  ls
+  497  docker volume prune
+  498  docker volume ls
+  499  clear
+  500  docker volume prune
+  501  docker volume ls
+  502  docker ps
+  503  docker ps -a
+  504  clear
+  505  docker volume rm 5eeea7ef289e3dbd344162ee93831f9d1890f34a45d46b14748c12a316601459
+  506  docker stop $(docker ps -a -q)
+  507  docker rm $(docker ps -a -q)
+  508* docker volume rm 5eeea7ef289e3dbd344162ee93831f9d1890f34a45d46b14748c12a31660145
+  509  clear
+  510  docker volume prune
+  511  clear
+  512  ls
+  513  du -sh
+  514  docker volume -h
+  515  clear
+  516  docker volume create dev
+  517  ls
+  518  docker volume ls
+  519  docker volume inspect dev
+  520  clear
+  521  docker volume create qa
+  522  docker volume ls
+
+
+docker run -itd -v dev:/opt/devops1 ubuntu
+docker run -itd -v dev:/opt/devops1 -v qa:/opt/devops2 ubuntu
+
+docker run -itd -v /opt/bkp:/opt/devops1 ubuntu
+
+ 569  clear
+  570  docker run -itd -v /opt/bkp:/opt/devops1 ubuntu
+  571  docker ps
+  572  docker exec 1943b4f04e0b df -kh
+  573  docker exec 1943b4f04e0b touch /opt/devops1/ramukaka.txt
+  574  ls
+  575  pwd
+  576  history
+  577  clear
+  578  ls
+  579  docker ps
+  580  docker stop $(docker ps -a -q)
+  581  docker rm $(docker ps -a -q)
+  582  ls
+  583  cd /var/lib/docker/volumes/
+  584  ls
+  585  cd dev/_data/
+  586  ls
+
+
+========
+docker wait	- 
+docker update
+=========
+
+
+Docker Networking
+=========================
+
+
+ 575  pwd
+  576  history
+  577  clear
+  578  ls
+  579  docker ps
+  580  docker stop $(docker ps -a -q)
+  581  docker rm $(docker ps -a -q)
+  582  ls
+  583  cd /var/lib/docker/volumes/
+  584  ls
+  585  cd dev/_data/
+  586  ls
+  587  history
+  588  clear
+  589  docker volumen ls
+  590  docker volume ls
+  591  docker stop $(docker ps -a -q)
+  592  clear
+  593  docker rm $(docker ps -a -q)
+  594  docker ps -a
+  595  clear
+  596  ifconfig
+  597  clear
+  598  docker network -h
+  599  clear
+  600  docker network ls
+  601  ifconfig
+  602  clear
+  603  docker network ls
+  604  docker inspect 79226471e6f9
+  605  clear
+  606  ifconfig
+  607  clear
+  608  docker network ls
+  609  docker inspect 79226471e6f9
+  610  clear
+  611  docker run -itd ubuntu
+  612  docker ps
+  613  docker inspect a04ceba8a47b
+  614  ifconfig
+  615  clear
+  616  ifconfig
+  617  docker run -itd ubuntu
+  618  ifconfig
+  619  clear
+  620*
+  621  docker network ls
+  622  docker create network dev
+  623  docker network create dev
+  624  docker network ls
+  625  docker network create qa
+  626  clear
+  627  docker network ls
+  628  docker inspect 1d72ddf69435
+  629  docker inspect dev
+  630  clear
+  631  docker network create -h
+  632  clear
+  633  docker network ls
+  634  ifconfig
+  635  clear
+  636  docker run -h
+  637  docker run help
+  638  docker run -help
+  639  clear
+  640  docker run help
+  641  docker help run
+  642  clear
+  643  ls
+  644  docker run -itd --net=dev  ubuntu
+  645  docker ps
+  646  docker inspect e883fc1f1990
+  647  clear
+  648  docker run -itd --net=qa  ubuntu
+  649  docker ps
+  650  docker inspect d1956d0e69c3
+  651  docker network ls
+  652  clear
+  653  docker network ls
+  654  clear
+  655  docker ps
+  656  docker rename d1956d0e69c3 qa
+  657  docker rename e883fc1f1990 dev
+  658  clear
+  659  docker ps
+  660  docker rename 39d0f131a5b8 default
+  661  clear
+  662  docker ps
+  663  docker network -h
+  664  clear
+  665  docker ps
+  666  docker network connect d1956d0e69c3 dev
+  667  docker network connect dev d1956d0e69c3
+  668  clear
+  669  docker inspect d1956d0e69c3
+  670  clear
+  671  docker ps
+  672  docker inspect e883fc1f1990
+  673  clear
+  674  ls
+  675  docker ps
+  676  docker rename d1956d0e69c3 qa+dev
+  677  docker rename d1956d0e69c3 qa-~=dev
+  678  docker rename d1956d0e69c3 qa-dev
+  679  clear
+  680  docker ps
+  681  docker network disconnect dev d1956d0e69c3
+  682  docker inspect d1956d0e69c3
+  683  clear
+  684  ls
+  685  docker network ls
+  686  docker network rm 79226471e6f9
+  687  docker network rm 547e56158ec3
+  688  docker stop $(docker ps -a -q)
+  689  docker rm $(docker ps -a -q)
+  690  clear
+  691  docker network rm 547e56158ec3
+  692  docker network prune
+  693  docker network ls
+  694  ifconfig
+  695  clear
+  696  ls
+  697  history
+
+ 703  clear
+  704  ls
+  705  ifconfig
+  706  clear
+  707  docker run -itd --net=host ubuntu
+  708  docker ps
+  709  docker inspect 752f7df37a84
+  710  docker ps
+  711  clear
+  712  ifconfig
+  713  clear
+  714  docker ps
+  715  docker attach 752f7df37a84
+  716  docker ps
+  717  docker run -d jenkins
+  718  docker run -d --net=host jenkins
+  719  docker ps
+  720  docker network ls
+  721  clear
+  722  docker run -itd --net=none ubuntu
+  723  docker ps
+  724  docker inspect c345e002c268
+  725  clear
+  726  docker ps
+  727  docker attach c345e002c268
+  728  clear
+
+https://www.devopsschool.com/notes/docker/commands-collections/docker-networking.txt
+
+
+Angelo Fernandes	13.232.164.182
+Sonal Jain	52.66.212.77
+Venkatesh pattabhi	13.232.163.110
+Amey Walke	13.232.32.172
+Shreyansh Shah	13.233.165.113
+Prasad Dhanala	13.233.216.176
+Vikas Parihar	13.233.196.246
+Shanthesh Kulur Sringeshwara Rao	13.232.174.177
+Adarsh V Nath	15.206.146.235
+Praveen Kumar	15.207.85.169
+Senthilnathan V	13.127.169.168
+Arijit Nath	52.66.200.64
+Ujjwal Kumar Pandey	13.232.245.234
+Sai Kumar	13.127.238.58
+Amandeep	13.233.245.145
+Arun Sathyanarayanan	13.233.127.225
+Sanjeeva Reddyvandla	13.235.245.250
+Varun Jalihal	35.154.95.253
+Nishant Dalal	13.233.53.76
+Karthik		13.233.43.75
+
+
+
+
+
+
+
+
+
+
+
+
