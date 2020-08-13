@@ -360,15 +360,44 @@ How to share my image with my team ?
 
 
 Using Dockerfile - Automated way CI CD.
+==================================================
 
+Do you know which user jenkins is running with? jenkins
+Which port? 8080
+which env?  JEN
 
+Rule of the dockerfile
+===========================
+Each line in dockerifle would create one layer.
+Each line in dockerfile would use base layer as their parent for layer.
 
+FROM ubuntu
+MAINTAINER Rajesh kumar devops@rajeshkumar.xyz
+ARG packname=git
+RUN apt-get update
+RUN groupadd -g 1001 ubuntu && useradd -d "/opt/" -u 1002 -g 1001 -m -s /bin/bash ubuntu
+RUN apt-get install ${packname} -y
+RUN touch /opt/devopsschool.txt
+COPY up-git-apache2-update.tar /opt/
+ENV JAVA_ME /opt
+USER ubuntu
+VOLUME /opt/ramukaka
 
+groupadd -g ${gid} ${group} \
+    && useradd -d "$JENKINS_HOME" -u ${uid} -g ${gid} -m -s /bin/bash ${user}
+=========================================================
 
+CMD vs ENTRYPOINT
+=====================
 
+Lab -0 
 
+https://www.devopsschool.com/blog/dockerfile-lab-exercise-1/
 
+https://www.devopsschool.com/tutorial/docker/dockerfile/dockerfile-example-sample-lab.html
 
+docker build -t img1 .
+docker build -t img1 -f mydocfile .
 
 
 
