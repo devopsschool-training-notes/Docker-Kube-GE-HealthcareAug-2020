@@ -1,0 +1,158 @@
+Qs
+
+What is Overlay
+===================
+Storage Driver
+	aufs
+	devicemapps
+	Overlay
+	Overlay2
+
+docker info---
+/var/lib/docker/overlay2/layer(s)
+	- bdirdge 
+	- host
+	- none
+=====================================
+CMD VS Entrypoint
+Docker Compose
+Kubernetes
+=====================================
+15.206.88.137
+==================================================
+How to run container?
+=======================
+How to set PID1? in the IMAGE....
+	CMD in dockefile - you can set PID1
+		THIS CAN BE REPLACED DURING RUN TIME.
+
+ENTRYPOINT'
+		THIS CAN NOT BE REPLACED DURING RUN TIME.	
+===============================================
+
+Mode of Executions in Linux?
+===========================
+SHELL Mode
+	ls
+
+EXEC Mode - Executable
+	/bin/ls
+	/bin/echo ffddf dddd
+
+================================
+CMD 
+CMD 
+===============================
+LAST WOULD TAKE PRECENDENCE
+
+===============================
+ENTRYPOINT
+CMD 
+===============================
+ENTRYPOINT ARG(CMD)
+
+ENTRYPOINT
+ENTRYPOINT
+=================
+LAST WOULD TAKE PRECENDENCE
+
+
+Docker Compose
+===========================================================================================
+===========================================================================================
+What is Docker Compose?
+	- Tool 
+	for Automating working with docker container for Development.
+	- Make your life easier with multiple container.
+	- Free
+	by Docker community
+	- 
+
+How to install it?
+https://docs.docker.com/compose/install/'
+
+How to get started?
+	- write a docker-compose.yaml
+	- Content of docker-compose.yaml
+	----------------------------------
+	services
+		services1 db
+				build - dockerilfe
+				run - image
+				port - portnum
+				env - ?
+				net - network name
+				volumen - volume
+		services2 app
+				build - dockerilfe
+				run - image
+				port - portnum
+				env - ?
+				net - network name
+				volumen - volume
+ 		services3 web
+				build - dockerilfe
+				run - image
+				port - portnum
+				env - ?
+				net - network name
+				volumen - volume
+----------------------------------------------------------
+			UP DOWN RM STOP START PS LOG
+			docker-compose up -d
+			docker-compose down
+			docker-compose up
+			docker-compose ps
+			docker-compose stop
+			docker-compose start
+			docker-compose stop
+			docker-compose rm
+
+  6  cd
+    7  ls
+    8  vi docker-compose.yaml
+    9  docker-compose ps
+   10  docker-compose up
+   11  clear
+   12  docker-compose ps
+   13  docker-compose
+   14  history
+=======================================================================
+
+version: '2'
+services:
+  wordpress:
+    image: wordpress:latest # https://hub.docker.com/_/wordpress/
+    ports:
+      - 80:80 # change ip if required
+    volumes:
+      - ./wp-app:/var/www/html # Full wordpress project
+      #- ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
+      #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+    depends_on:
+      - db
+    networks:
+      - wordpress-network
+  db:
+    image: mysql:5.5 # https://hub.docker.com/_/mysql/ - or mariadb https://hub.docker.com/_/mariadb
+    ports:
+      - 3306:3306 # change ip if required
+    volumes:
+      - ./wp-data:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - wordpress-network
+networks:
+  wordpress-network:
+      driver: bridge
+
+
+
+	
