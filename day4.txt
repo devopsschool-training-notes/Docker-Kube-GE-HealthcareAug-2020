@@ -87,23 +87,23 @@ Karthik
 
 =====================WORKER======================
 
-Angelo Fernandes
-Sonal Jain
-Venkatesh pattabhi
-Amey Walke
-Shreyansh Shah
-Prasad Dhanala
-Vikas Parihar
-Shanthesh Kulur Sringeshwara Rao
-Adarsh V Nath
-Praveen Kumar
-Senthilnathan V
-Arijit Nath
-Ujjwal Kumar Pandey
-Sai Kumar
-Amandeep
-Arun Sathyanarayanan
-Sanjeeva Reddyvandla
-Varun Jalihal
-Nishant Dalal
+Angelo Fernandes	13.127.98.206
+Sonal Jain		13.235.128.98
+Venkatesh pattabhi	3.6.40.42
+Amey Walke		13.233.162.212
+Shreyansh Shah		13.233.6.187
+Prasad Dhanala		13.232.220.148
+Vikas Parihar		15.207.106.131
+Shanthesh Kulur Sringeshwara Rao	13.233.167.44
+Adarsh V Nath		13.233.250.136
+Praveen Kumar		13.126.140.180
+Senthilnathan V		13.235.244.196
+Arijit Nath		3.6.87.55	
+Ujjwal Kumar Pandey	52.66.66.251
+Sai Kumar		13.233.85.207
+Amandeep		13.233.168.156
+Arun Sathyanarayanan	13.127.187.65
+Sanjeeva Reddyvandla	13.232.88.9
+Varun Jalihal		13.232.2.33
+Nishant Dalal		13.126.64.236
 Karthik
