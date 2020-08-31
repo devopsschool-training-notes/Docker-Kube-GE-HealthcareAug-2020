@@ -107,3 +107,248 @@ Sanjeeva Reddyvandla	13.232.88.9
 Varun Jalihal		13.232.2.33
 Nishant Dalal		13.126.64.236
 Karthik
+
+===================================================================
+===================================================================
+
+Admin - ONE LAPTOP.
+Kubectl -----> Multiple K8s
+===================================
+config.
+	Clustor(S)
+		Clustor1 - http://666.6.6.6.6.66443
+		Clustor2 - http://666.6.6.6.6.66443
+		Clustor3 - http://666.6.6.6.6.66443
+		Clustor4 - http://666.6.6.6.6.66443
+	User(S)
+		User1 - 
+		User2
+		User3 
+		User3 
+	Context(S)
+		Context1 = Clustor1 + User2
+		Context2 = Clustor2 + User3 
+		Context3
+		Context4
+	curr-conext = Context3
+=============================================================
+Namespace
+
+   7  kubectl get nc
+    8  kubectl get ns
+    9  kubectl get pods ]
+   10  kubectl get pods
+   11  kubectl get pods -n=kube-system
+   12  clear
+   13  history
+=====================================
+API SERVER
+	API	-> ONE FUNCTION == ONE Resource == ONE Obejct
+	SERVER ->  Contains and Manage Multiple API.
+
+What Can you do with Each API?
+===============================
+	POST GET PUT DELETE
+	CRUD
+		create
+			CMD
+				create
+			YAML
+				create -f
+
+		Read
+			CMD
+				get
+				describe
+			YAML
+
+		update
+			CMD
+				edit
+			YAML
+				apply -f
+
+		delete
+			CMD
+				delete
+			YAML
+				delete f
+
+
+What are the APIS we have in "API SERVER"?
+
+[centos@ip-172-31-14-147 ~]$ kubectl api-resources
+NAME                              SHORTNAMES   APIGROUP                       NAMESPACED   KIND
+bindings                                                                      true         Binding
+componentstatuses                 cs                                          false        ComponentStatus
+configmaps                        cm                                          true         ConfigMap
+endpoints                         ep                                          true         Endpoints
+events                            ev                                          true         Event
+limitranges                       limits                                      true         LimitRange
+namespaces                        ns                                          false        Namespace
+nodes                             no                                          false        Node
+persistentvolumeclaims            pvc                                         true         PersistentVolumeClaim
+persistentvolumes                 pv                                          false        PersistentVolume
+pods                              po                                          true         Pod
+podtemplates                                                                  true         PodTemplate
+replicationcontrollers            rc                                          true         ReplicationController
+resourcequotas                    quota                                       true         ResourceQuota
+secrets                                                                       true         Secret
+serviceaccounts                   sa                                          true         ServiceAccount
+services                          svc                                         true         Service
+mutatingwebhookconfigurations                  admissionregistration.k8s.io   false        MutatingWebhookConfiguration
+validatingwebhookconfigurations                admissionregistration.k8s.io   false        ValidatingWebhookConfiguration
+customresourcedefinitions         crd,crds     apiextensions.k8s.io           false        CustomResourceDefinition
+apiservices                                    apiregistration.k8s.io         false        APIService
+controllerrevisions                            apps                           true         ControllerRevision
+daemonsets                        ds           apps                           true         DaemonSet
+deployments                       deploy       apps                           true         Deployment
+replicasets                       rs           apps                           true         ReplicaSet
+statefulsets                      sts          apps                           true         StatefulSet
+tokenreviews                                   authentication.k8s.io          false        TokenReview
+localsubjectaccessreviews                      authorization.k8s.io           true         LocalSubjectAccessReview
+selfsubjectaccessreviews                       authorization.k8s.io           false        SelfSubjectAccessReview
+selfsubjectrulesreviews                        authorization.k8s.io           false        SelfSubjectRulesReview
+subjectaccessreviews                           authorization.k8s.io           false        SubjectAccessReview
+horizontalpodautoscalers          hpa          autoscaling                    true         HorizontalPodAutoscaler
+cronjobs                          cj           batch                          true         CronJob
+jobs                                           batch                          true         Job
+certificatesigningrequests        csr          certificates.k8s.io            false        CertificateSigningRequest
+leases                                         coordination.k8s.io            true         Lease
+endpointslices                                 discovery.k8s.io               true         EndpointSlice
+events                            ev           events.k8s.io                  true         Event
+ingresses                         ing          extensions                     true         Ingress
+ingressclasses                                 networking.k8s.io              false        IngressClass
+ingresses                         ing          networking.k8s.io              true         Ingress
+networkpolicies                   netpol       networking.k8s.io              true         NetworkPolicy
+runtimeclasses                                 node.k8s.io                    false        RuntimeClass
+poddisruptionbudgets              pdb          policy                         true         PodDisruptionBudget
+podsecuritypolicies               psp          policy                         false        PodSecurityPolicy
+clusterrolebindings                            rbac.authorization.k8s.io      false        ClusterRoleBinding
+clusterroles                                   rbac.authorization.k8s.io      false        ClusterRole
+rolebindings                                   rbac.authorization.k8s.io      true         RoleBinding
+roles                                          rbac.authorization.k8s.io      true         Role
+priorityclasses                   pc           scheduling.k8s.io              false        PriorityClass
+
+==============================================
+GEX  - MS
+	ORDER
+	ms1	- CRUD	- http://5.6.7.7:7888
+	ms2	- CRUD	- http://5.6.7.7:7888
+	ms4	- CRUD	- http://5.6.7.7:7888
+	ACCOUNTING
+	ms4	- CRUD	- http://5.6.7.7:7888
+	ms4	- CRUD	- http://5.6.7.7:7888
+	CATELOG	
+	ms20	- CRUD	- http://5.6.7.7:7888
+
+
+  19  kubectl api-resources
+   20  clear
+   21  kubectl api-resources
+   22  history
+
+====================================================
+
+What do you want?
+- NS
+- POD
+- RC
+- Deployment
+
+
+ 26  kubectl get nodes
+   27  clear
+   28  kubectl get ns
+   29  kubectl create ns dev
+   30  kubectl get ns
+   31  kubectl create ns qa
+   32  clear
+   33  kubectl create ns qa
+   34  kubectl get ns
+   35  kubectl describe ns dev
+   36  clear
+   37  kubectl get ns
+   38  kubectl edit ns dev
+   39  clear
+   40  kubectl delete  ns dev
+   41  kubectl get ns
+   42  history
+
+- POD > Container -> Docker Image -> Docker hub
+===============================================
+
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod-rajesh
+  labels: 
+    app: webserver
+    software: rajesh
+spec:
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80
+
+
+
+
+
+ 45  kubectl get ns
+   46  kubectl get pods
+   47  kubectl get pods -n=qa
+   48  kubectl
+   49  kubectl create
+   50  clear
+   51  history
+   52  clear
+   53  kubectl create
+   54  clear
+   55  vi pod.yaml
+   56  kubectl create -f pod.yaml
+   57  kubectl get pods
+   58  kubectl create -f pod.yaml
+   59  kubectl create -f pod.yaml -n=qa
+   60  kubectl get pods
+   61  kubectl get pods -n=qa
+   62  kubectl get pods --all-namespaces
+   63  clear
+   64  kubectl get pods -n=qa
+   65  kubectl get pods -n=qa -o wide
+   66  kubectl describe pod hello-pod-rajesh
+   67  kubectl describe pod hello-pod-rajesh -n=qa
+   68  clear
+   69  kubectl describe pod hello-pod-rajesh -n=qa
+   70  clear
+   71  kubectl get pod -n=qa
+   72  kubectl edit pod hello-pod-rajesh -n=qa
+   73  kubectl describe pod hello-pod-rajesh -n=qa
+   74  clear
+   75  ls
+   76  vi pod.yaml
+   77  kubectl apply -f pod.yaml -n=qa
+   78  kubectl describe pod hello-pod-rajesh -n=qa
+   79  clear
+   80  ls
+   81  kubectl delete pod hello-pod-rajesh
+   82  kubectl get pods
+   83  kubectl get pods -n=qa
+   84  kubectl delete -f pod.yaml -n=qa
+   85  kubectl get pods -n=qa
+   86  history
+
+
+
+
+
+
+
+
+
+
+
+
