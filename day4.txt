@@ -342,9 +342,124 @@ spec:
    86  history
 
 
+=============================================
+ReplicationController.
+============================
+Replication == 1 TO MANY === Repliate POD to many
+Controller = DESIRE Number of PODS MUST BE Matching with Actual
+======================================
+
+  27  kubectl api-versions
+   28  clear
+   29  kubectl
+   30  clear
+   31  kubectk explain -h
+   32  kubectl explain -h
+   33  clear
+   34  kubectl explain ns
+   35  'clear
+   36  clear
+   37  kubectl explain ns.spec
+   38  kubectl explain pods
+   39  clear
+   40  kubectl explain pods.spec
+   41  kubectl explain pods.spec.containers
+   42  clear
+   43  kubectl explain ReplicationController
+   44  kubectl explain ReplicationController.spec
+   45  kubectl explain ReplicationController.spec.template
+   46  kubectl explain ReplicationController.spec.template.spec
+   47  kubectl explain ReplicationController.spec.template.spec.containers
+   48  history
 
 
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctr
+        image: scmgalaxy/nginx-devopsschoolv1
+        ports:
+        - containerPort: 80
 
+
+  51  vi rc.yaml
+   52  kubectl create -f rc.yaml -n=qa
+   53  kubectl get rc
+   54  kubectl get rc -n=qa
+   55  kubectl get pods -n=qa
+   56  kubectl edit rc hello-rc -n=qa
+   57  watch kubectl get pods -n=qa
+   58  vi rc.yaml
+   59  kubectl apply -f rc.yaml -n=qa
+   60  kubectl get pods -n=qa
+   61  clear
+   62  kubectl get pods -n=qa
+   63  kubectl get rc -n=qa
+   64  kubectl describe pod hello-rc-zlwtz -n=qa
+   65  clear
+   66  ls
+   67  kubectl get rc -n=qa
+   68  kubectl get pods -n=qa
+   69  kubectl delete pod hello-rc-4fw75 hello-rc-7nqxs hello-rc-zlwtz -n=qa
+   70  kubectl get pods -n=qa
+
+
+ 77  kubectl exec -h
+   78  clear
+   79  ls
+   80  kubectl get pods -n=qa
+   81  kubectl log hello-rc-h4n7c
+   82  kubectl logs hello-rc-h4n7c -n=qa
+   83  kubectl get pods -o wide -n=qa
+   84  watch kubectl logs hello-rc-h4n7c -n=qa
+   85  clear
+   86  ls
+   87  kubectl get pods -n=qa
+   88  kubectl exec hello-rc-h4n7c ls -n=qa
+   89  clear
+   90  kubectl exec -it hello-rc-h4n7c /bin/bash
+   91  kubectl exec -it hello-rc-h4n7c /bin/bash -n=qa
+   92  kubectl attach hello-rc-h4n7c
+   93  kubectl attach hello-rc-h4n7c -n=qa
+   94  kubectl
+   95  clear
+   96  history
+
+
+How to use PODS?
+==============================
+describe	- describe any resources
+logs		- You can see a logs of containers
+exec		- 
+attach		- 
+cp		- 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod-mul
+  labels: 
+    app: webserver
+    software: rajesh
+spec:
+  containers:
+  - name: hello-ctr1
+    image: nginx
+    ports:
+    - containerPort: 80
+  - name: hello-ctr2
+    image: jenkins
+    ports:
+    - containerPort: 8080
 
 
 
