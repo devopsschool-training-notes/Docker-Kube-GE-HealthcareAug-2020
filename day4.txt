@@ -1,3 +1,68 @@
+Master
+	API Server -> POD -> Container -> Docker Image -> Google Registry
+	Etcd -> POD -> Container -> Docker Image -> Google Registry
+	Controller Manager -> POD -> Container -> Docker Image -> Google Registry
+	Schedular -> POD -> Container -> Docker Image -> Google Registry
+ 	
+	Kubelet
+	Docker
+	Proxy -> POD -> Container -> Docker Image -> Google Registry
+		Network Policy - Weave POD
+Worker
+	Kubelet
+	Docker
+	Proxy -> POD -> Container -> Docker Image -> Google Registry
+		Network Policy - Weave POD
+Workstation
+	kubectl
+		-> config
+			- CURR_DIR/.kube
+			- USER_HOME/.kube	[Default & Recomm ]
+			- ENV KUBECONFIG=pathof .kube
+
+==================
+Master	13.232.125.235
+-------
+Docker - https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+Kubeadm
+kubectl
+kubelet
+https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
+
+
+Your Kubernetes control-plane has initialized successfully!
+
+==============================WORKSTATION=========================================
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+==============================NETWORK=========================================
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+
+$ kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+$ kubectl get nodes
+$ kubectl get pods --all-namespaces
+$ kubectl get nodes
+
+==============================WORKER=========================================
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.14.147:6443 --token 73yj3f.may7xnro4itnfkaj \
+    --discovery-token-ca-cert-hash sha256:c518af07cdce7997798b25a12b25c942fcaad9ecabdfe6b2aff39618ee770c26
+
+
+Worker - 15.206.158.29
+
+Workstation
+
+=====================MASTER======================
+
 Angelo Fernandes	13.235.80.185
 Sonal Jain		52.66.245.110
 Venkatesh pattabhi	13.127.231.33
@@ -17,4 +82,28 @@ Arun Sathyanarayanan	3.7.253.114
 Sanjeeva Reddyvandla	13.234.31.69
 Varun Jalihal		15.207.113.212
 Nishant Dalal		3.6.126.185
+Karthik
+
+
+=====================WORKER======================
+
+Angelo Fernandes
+Sonal Jain
+Venkatesh pattabhi
+Amey Walke
+Shreyansh Shah
+Prasad Dhanala
+Vikas Parihar
+Shanthesh Kulur Sringeshwara Rao
+Adarsh V Nath
+Praveen Kumar
+Senthilnathan V
+Arijit Nath
+Ujjwal Kumar Pandey
+Sai Kumar
+Amandeep
+Arun Sathyanarayanan
+Sanjeeva Reddyvandla
+Varun Jalihal
+Nishant Dalal
 Karthik
