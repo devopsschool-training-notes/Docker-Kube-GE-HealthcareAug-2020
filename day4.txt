@@ -460,10 +460,70 @@ spec:
     image: jenkins
     ports:
     - containerPort: 8080
+======================================================
+Deployment
+=======================
+Replication
+Controller	by ReplicaSets
+Versioning
+Rollout without downtime
+Rollback without downtime.
 
 
+kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1
+
+kubectl scale --replicas=5 deployment/my-dep
+
+Examples:
+  # Rollback to the previous deployment
+  kubectl rollout undo deployment/abc
+
+  # Check the rollout status of a daemonset
+  kubectl rollout status daemonset/foo
+
+Available Commands:
+  history     View rollout history
+  pause       Mark the provided resource as paused
+  restart     Restart a resource
+  resume      Resume a paused resource
+  status      Show the status of the rollout
+  undo        Undo a previous rollout
+
+kubectl rollout status deployment/my-dep
+kubectl scale --replicas=15 deployment/my-dep
+kubectl rollout history deployment/my-dep 
+kubectl edit deployment my-dep	
+		scmgalaxy/nginx-devopsschoolv1 => scmgalaxy/nginx-devopsschoolv2
+kubectl rollout status deployment/my-dep
+kubectl rollout history deployment/my-dep
+       
+kubectl rollout undo -h
+kubectl rollout undo deployment/my-dep --to-revision=1
 
 
-
-
+58  clear
+   59  curl http://10.44.0.8
+   60  kubectl rollout history deployment/my-dep
+   61  kubectl edit deployment my-dep
+   62  kubectl rollout status deployment/my-dep
+   63  kubectl rollout history deployment/my-dep
+   64  kubectl get pods
+   65  kubectl get pods -o wide
+   66  curl http://10.44.0.24
+   67  clear
+   68  kubectl explain deploy
+   69  kubectl explain deploy.spec
+   70  clear
+   71  kubectl explain deploy.spec.strategy
+   72  kubectl explain deploy.spec
+   73  clear
+   74  kubectl explain deploy.spec.template
+   75  kubectl get deploy
+   76  kubectl describe deploy my-dep
+   77  kubectl get deploy.spec.RollingUpdateStrategy
+   78  kubectl get deploy.spec | grep -i RollingUpdateStrategy
+   79  kubectl get deploy.spec.template
+   80  clear
+   81  ls'
+   82  clear
 
