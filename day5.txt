@@ -375,6 +375,102 @@ spec:
  1086  clear
  1087  history
 
+==========================================================================
+Montioring
+=========================
+Infra
+	Container Moniotring	- cadvisor (Builtin) - https://github.com/google/cadvisor
+				docker stats
+	Pod Monitoring - heapster ==> metrics-server - https://github.com/kubernetes-sigs/metrics-server
+				kubectl top pods
+	Node Moniotoring - Prometheus using  Prometheus operators
+Log Moniotring
+	Container 	-> Logs		
+	Kubetlet events	- Logs
+	Controller Events - Logs
+	===============================
+	elk
+		Elastic Search - Database aka inverted index + DSL
+		Logstash - Parsing - Process and Clean a data
+		Beats - Input of Logs.
+		Kibana - dashboard
+
+
+		Beets --> Logstash --> ES <------- Kibana
+		==================================
+		
+==================================================
+Authentication and Authorization
+================================================
+Authentication   =- How can we access K8s?
+https://kubernetes.io/docs/reference/access-authn-authz/authentication/
+ - CERT
+
+Authorization - What can you do?
+https://kubernetes.io/docs/reference/access-authn-authz/authorization/
+- RBAC
+
+Role based Access Control
+
+
+
+
+
+
+
+
+openssl x509 -req -in employee.csr -CA /etc/kubernetes/pki/ca.crt -CAkey /etc/kubernetes/pki/ca.key -CAcreateserial -out /home/centos/rajesh/employee.crt -days 500
+
+
+
+kubectl config set-credentials employee --client-certificate=/home/centos/rajesh/employee.crt  --client-key=/home/centos/rajesh//employee.key
+
+
+=========================================
+https://github.com/devopsschool-training-notes/Kubernetes-Tecnotree-Nov-2019/blob/master/SUPERNOTES.TXT
+
+
+
+========================
+What is helm charts?
+======================
+
+yum is package mgmr for RHEL
+apt is pack mgmt for Ubu
+playstore is pack mgmr for Andoid
+Nuge is pack mgmr for windows
+================================
+Kubenertes - 
+	- 40 Create - 20 Update - Delete == 50 commands...
+Tool 
+	helm
+	- command line tool.
+		Download a HELM Chart from remote 
+		Apply to k8s.
+
+	What is CHAT
+	- Collections of YAML
+========================================================
+https://www.devopsschool.com/kit/master-in-devops-engineering.html
+
+
+www.RajeshKumar.xyz
+		- Email
+		- Phone
+		- SOcial
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
