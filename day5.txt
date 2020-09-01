@@ -1,0 +1,181 @@
+- Compute
+- Discovery and LoadBalancers
+- Storage - 
+- Security 
+- Monitoring
+	X tools
+==========================
+Service IP  - POD work
+
+Service Type
+		- ClustorIP 
+			Is it accessible by all Nodes of the Cluster???
+		- NodePort
+			- It create a Service of ClustorIP 
+			+ It would expose at Node Port as well.
+		- LoadBalancer
+			- It create a Service of ClustorIP 
+			+ It would expose at Node Port as well.
+			+ It create Exte LB and Add all Node of the Clustor to ELB.
+WORKER IP
+=======================
+13.232.238.89
+
+kubectl create service clusterip my-cs --tcp=5678:80
+
+app=webserver,software=rajesh
+
+kubectl expose deployment my-dep --port=80 --target-port=80
+
+
+app=my-dep
+
+kubectl label pods hello-pod-mul app=my-dep
+kubectl label pods hello-pod-mul2 app=my-dep --overwrite
+
+
+ 307  vi pod1.yaml
+  308  vi pod2.yaml
+  309  vi pod1.yaml
+  310  more pod2.yaml
+  311  clear
+  312  more pod1.yaml
+  313  clear
+  314  ls
+  315  kubectl get svc
+  316  kubectl get pods
+  317  clear
+  318  ls
+  319  kubectl apply -f pod1.yaml
+  320  kubectl apply -f po2.yaml
+  321  kubectl apply -f pod2.yaml.yaml
+  322  kubectl apply -f pod2.yaml
+  323  clear
+  324  ls
+  325  kubectl get pods
+  326  kubectl get pods -o wide
+  327  clear
+  328  kubectl get pods -o wide
+  329  kubectl get pods -o wide --show-labels
+  330  kubectl create service -h
+  331  clear
+  332  kubectl create service clusterip -h
+  333  clear
+  334  kubectl get pods -o wide --show-labels
+  335  curl http://10.44.0.5
+  336  curl http://10.44.0.6
+  337  clear
+  338  kubectl create service clusterip my-cs --tcp=5678:80
+  339  kubectl get svc
+  340  curl http://10.98.29.191
+  341  curl http://10.98.29.191:5678
+  342  kubectl get svc --show-lables
+  343  kubectl get svc --show-labels
+  344  kubectl get pods -o wide --show-labels
+  345  kubectl edit svc my-cs
+  346  clear
+  347  kubectl get pods -o wide --show-labels
+  348  kubectl get svc --show-labels
+  349  kubectl describe svc my-cs
+  350  kubectl edit svc my-cs
+  351  clear
+  352  kubectl describe svc my-cs
+  353  kubectl get svc
+  354  curl http://10.98.29.191
+  355  curl http://10.98.29.191:5678
+  356  clear
+  357  curl http://10.98.29.191:5678
+  358  clear
+  359  curl http://10.98.29.191:5678
+  360  watch curl http://10.98.29.191:5678
+  361  clear
+  362  ls
+  363  kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1
+  364  kubectl get deploy
+  365  clear
+  366  kubectl scale --replicas=5 deployment/my-dep
+  367  ls
+  368  kubectl get deploy
+  369  kubectl expose -h
+  370  c
+  371  history
+  372  clear
+  373  kubectl expose deployment my-dep --port=80 --target-port=80
+  374  kubectl get svc
+  375  kubectl describe svc my-dep
+  376  clear
+  377  ls
+  378  kubectl get svc
+  379  curl http://10.102.253.249
+  380  watch curl http://10.102.253.249
+  381  clear
+  382  ls
+  383  kubectl get pods
+  384  kubectl describe svc my-dep
+  385  clear
+  386  ls
+  387  kubectl get pods
+  388  kubectl label -h
+  389  clear
+  390  kubectl get pods
+  391  kubectl label pods hello-pod-mul app=my-dep
+  392  kubectl label pods hello-pod-mul app=my-dep --overwrite
+  393  clear
+  394  kubectl label pods hello-pod-mul2 app=my-dep --overwrite
+  395  kubectl get pods
+  396  kubectl describe svc my-dep
+  397  cleart
+  398  clear
+  399  watch curl http://10.102.253.249
+  400  history
+
+
+
+kubectl expose deployment my-dep --port=80 --target-port=80 --type=NodePort --name=my-nodesvc
+kubectl expose deployment my-dep --port=80 --target-port=80 --type=LoadBalancer --name=my-lb
+
+
+http://ge-1082282632.ap-south-1.elb.amazonaws.com/
+ge.devopstraining.xyz
+
+
+
+
+
+my-lb        LoadBalancer   10.107.24.69     ge-1082282632.ap-south-1.elb.amazonaws.com     80:31549/TCP   10m
+
+  400  history
+  401  clear
+  402  kubectl get svc
+  403  kubectl expose deployment -h
+  404  clear
+  405  kubectl expose deployment my-dep --port=80 --target-port=80 --type=NodePort
+  406  clear
+  407  kubectl expose deployment my-dep --port=80 --target-port=80 --type=NodePort --name=my-nodesvc
+  408  kubectl get swvc
+  409  kubectl get svc
+  410  curl http://10.96.240.207
+  411  clea
+  412  rclear
+  413  clear
+  414  kubectl get svc
+  415  kubectl describe svc my-dep
+  416  kubectl export
+  417  kubectl expose -h
+  418  clear
+  419  kubectl expose deployment my-dep --port=80 --target-port=80 --type=LoadBalancer --name=my-lb
+  420  kubectl get svc
+  421  curl http://10.107.24.69
+  422  kubectl create -h
+  423  clear
+  424  kubectl create service -h
+  425  clear
+  426  kubectl get svc
+
+kubectl taint node ip-172-31-14-147.ap-south-1.compute.internal node-role.kubernetes.io/master:NoSchedule-
+
+
+
+
+
+
