@@ -174,6 +174,206 @@ my-lb        LoadBalancer   10.107.24.69     ge-1082282632.ap-south-1.elb.amazon
 
 kubectl taint node ip-172-31-14-147.ap-south-1.compute.internal node-role.kubernetes.io/master:NoSchedule-
 
+====================================
+Storage
+========================
+Prob is -  PODs are emphe*
+========================
+How can we have data peristant beyong a lifecycle of the POD?
+===============================================================
+Answer - k8s volume
+
+k8s volume
+	
+Physcial Storage where "k8s volume" can be created"
+		Block Storage
+		- EBS on AWS
+		- Azure Disk on Azure
+		- Node-in Built storage
+
+		File Storage
+		- NFS
+		- EFS on AWS
+		- cefhs
+
+		OBJECT Storage
+		- git repo	
+		- s3 
+
+How k8s would understand these tech?
+		k8s storage interface
+		- many Drivers....
+
+GCEPersistentDisk
+AWSElasticBlockStore
+AzureFile
+AzureDisk
+CSI
+FC (Fibre Channel)
+FlexVolume
+Flocker
+NFS
+iSCSI
+RBD (Ceph Block Device)
+CephFS
+Cinder (OpenStack block storage)
+Glusterfs
+VsphereVolume
+Quobyte Volumes
+HostPath (Single node testing only -- local storage is not supported in any way and WILL NOT WORK in a multi-node cluster)
+Portworx Volumes
+ScaleIO Volumes
+StorageOS
+	
+===========================================================================
+
+How can we make K8s Volume available in Clustor for PODS?
+=======================================================
+
+Provisioning ==> 	BINDING 			==> USING ==> Reclaiming
+==============================================================
+admin			user	     			user
+=================================================
+Persistent Volumes	persistentvolumeclaims		pod.spec.volume	
+							pod.spec.containers.volumemounts.
+Create a pool of vol.
+
+
+
+HostPath
+=======================================
+https://www.devopsschool.com/blog/persistentvolume-persistentvolumeclaim-volumes-using-hostpath/
+
+
+
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: rajesh-pv1
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
+
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: rajesh-pv2
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/tmp/devopsschool"
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rajeshpvc
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: rajeshpvc1
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: task-pv-pod
+spec:
+  containers:
+    - name: task-pv-container
+      image: scmgalaxy/nginx-devopsschoolv1
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: rajeshpvc1
+
+ 1037  clear
+ 1038  ls
+ 1039  mkdir rajesh
+ 1040  cd rajesh/
+ 1041  ls
+ 1042  vi pv1.yaml
+ 1043  kubectl get pv
+ 1044  kubectl create -f pv1.yaml
+ 1045  kubectl get pv
+ 1046  vi pv2.yaml
+ 1047  kubectl create -f pv2.yaml
+ 1048  kubectl get pv
+ 1049  clear
+ 1050  kubectl get pvc
+ 1051  vi pv1.yaml
+ 1052  clear
+ 1053  ls
+ 1054  vi pvc1.yaml
+ 1055  kubectl create -f pvc1.yaml
+ 1056  kubectl get pvc
+ 1057  kubectl get pv
+ 1058  vi pvc1.yaml
+ 1059  kubectl apply -f pvc1.yaml
+ 1060  clear
+ 1061  ls
+ 1062  kubectl get pv
+ 1063  kubectl get pvc
+ 1064  vi pvc2.yaml
+ 1065  kubectl create -f pvc2.yaml
+ 1066  kubectl get pvc
+ 1067  kubectl get pv
+ 1068  kubectl delete pv rajeshpvc1
+ 1069  kubectl delete pv rajesh-pv2
+ 1070  ls
+ 1071  vi pv2.yaml
+ 1072  kubectl create -f pv2.yaml
+ 1073  kubectl get pv
+ 1074  kubectl get pvc
+ 1075  clear
+ 1076  kubectl get pvc
+ 1077  kubectl get pvc pv
+ 1078  kubectl get pvc
+ 1079  clear
+ 1080  ls
+ 1081  vi pod.yam
+ 1082  kubectl create -f pod.yam
+ 1083  kubectl get pods
+ 1084  kubectl exec task-pv-pod touch /usr/share/nginx/html/index.html
+ 1085  kubectl get pods -o wide
+ 1086  clear
+ 1087  history
 
 
 
